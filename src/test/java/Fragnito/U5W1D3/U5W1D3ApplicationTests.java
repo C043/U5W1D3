@@ -64,6 +64,12 @@ class U5W1D3ApplicationTests {
 		assertTrue(hawaiianPizza.getToppingList().containsAll(List.of(tomato, cheese, pineapple, ham)));
 	}
 
+	@Test
+	void checkCopertoValue(){
+		double coperto = (double) context.getBean("coperto");
+		assertEquals(2.00, coperto);
+	}
+
 	private static Stream<Arguments> orderGen(){
 		return Stream.of(
 				Arguments.of(new Ordine(new Tavolo(1, 2, StatoTavolo.LIBERO), 1, List.of(new Pizza("1", 100, 10, new ArrayList<>()), new Bevanda("4", 20, 5, 0.50)), 2, 2.00), 19.00),
