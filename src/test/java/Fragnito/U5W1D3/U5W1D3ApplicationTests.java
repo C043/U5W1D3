@@ -49,6 +49,21 @@ class U5W1D3ApplicationTests {
 		);
 	}
 
+	@Test
+	void checkPizzaToppings(){
+		Pizza pizzaMargherita = (Pizza) context.getBean("pizza_margherita");
+		Pizza salamiPizza = (Pizza) context.getBean("salami_pizza");
+		Pizza hawaiianPizza = (Pizza) context.getBean("hawaiian_pizza");
+		Topping tomato = (Topping) context.getBean("tomato");
+		Topping cheese = (Topping) context.getBean("cheese");
+		Topping salami = (Topping) context.getBean("salami");
+		Topping pineapple = (Topping) context.getBean("pineapple");
+		Topping ham = (Topping) context.getBean("ham");
+		assertTrue(pizzaMargherita.getToppingList().containsAll(List.of(tomato, cheese)));
+		assertTrue(salamiPizza.getToppingList().containsAll(List.of(tomato, cheese, salami)));
+		assertTrue(hawaiianPizza.getToppingList().containsAll(List.of(tomato, cheese, pineapple, ham)));
+	}
+
 	private static Stream<Arguments> orderGen(){
 		return Stream.of(
 				Arguments.of(new Ordine(new Tavolo(1, 2, StatoTavolo.LIBERO), 1, List.of(new Pizza("1", 100, 10, new ArrayList<>()), new Bevanda("4", 20, 5, 0.50)), 2, 2.00), 19.00),
