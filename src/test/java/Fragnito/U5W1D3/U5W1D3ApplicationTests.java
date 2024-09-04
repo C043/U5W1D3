@@ -23,9 +23,13 @@ class U5W1D3ApplicationTests {
 	AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
 	@Test
-	void checkPrices(){
+	void checkPizzaPrices(){
 		Pizza pizzaMargherita = (Pizza) context.getBean("pizza_margherita");
+		Pizza salamiPizza = (Pizza) context.getBean("salami_pizza");
+		Pizza hawaiianPizza = (Pizza) context.getBean("hawaiian_pizza");
 		assertEquals(4.99, pizzaMargherita.getPrezzo());
+		assertEquals(5.99, salamiPizza.getPrezzo());
+		assertEquals(6.49, hawaiianPizza.getPrezzo());
 	}
 
 	private static Stream<Arguments> orderGen(){
