@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class U5W1D3ApplicationTests {
@@ -30,6 +31,22 @@ class U5W1D3ApplicationTests {
 		assertEquals(4.99, pizzaMargherita.getPrezzo());
 		assertEquals(5.99, salamiPizza.getPrezzo());
 		assertEquals(6.49, hawaiianPizza.getPrezzo());
+	}
+
+	@Test
+	void checkMenu(){
+		Menu menu = (Menu) context.getBean("menu");
+		assertTrue(menu.getPizzaList().contains(context.getBean("pizza_margherita")) &&
+				menu.getPizzaList().contains(context.getBean("salami_pizza")) &&
+				menu.getPizzaList(). contains(context.getBean("hawaiian_pizza")) &&
+				menu.getBevandaList().contains(context.getBean("acqua")) &&
+				menu.getBevandaList().contains(context.getBean("birra")) &&
+				menu.getBevandaList().contains(context.getBean("vino")) &&
+				menu.getToppingList().contains(context.getBean("cheese")) &&
+				menu.getToppingList().contains(context.getBean("ham")) &&
+				menu.getToppingList().contains(context.getBean("pineapple")) &&
+				menu.getToppingList().contains(context.getBean("salami"))
+		);
 	}
 
 	private static Stream<Arguments> orderGen(){
